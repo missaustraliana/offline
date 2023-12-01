@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: "kis";
-  src: url(font/1989TaylorsVersion.ttf);
+  src: url(https://cdn.missaustraliana.net/1989TaylorsVersion.ttf);
 }
 body {
   background-image: url("https://cdn.missaustraliana.net/websitebg.png");
