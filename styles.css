@@ -3,9 +3,7 @@
   src: url(https://cdn.missaustraliana.net/1989TaylorsVersion.ttf);
 }
 body {
-  background-image: url("https://cdn.missaustraliana.net/websitebg.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: black;
   width: 100%;
   height: 100vh;
   margin: 0;
