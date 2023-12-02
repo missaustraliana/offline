@@ -25,14 +25,9 @@
   
 <!--<h2 class="billalert"></h2>-->
 <h1>miss australiana</h1>
-<h3 class="t2">we seem to be having technical problems.</h3>
+<h3 class="t2">we seem to be having technical problems. so we've served you a static page.</h3>
 <h3 class="t2">::CLOUDFLARE_ERROR_500S_BOX::</h3>
 
-<div class="videoWrapper">
-  <div class="ambilightWrapper">
-      <video id="video" src="https://cdn.missaustraliana.net/delicate.mp4#t=00:03:05" poster="https://cdn.missaustraliana.net/beforeplay.gif" playsinline autoplay muted loop onclick="audiotoggle()"></video>
-  </div>
-</div>
 <h2 class="t2">where would you like to go?</h2>
 <div class="t3">
   <a href="https://archive.org/details/@fullpwnmedia">Internet Archive</a>
@@ -43,99 +38,5 @@
 </div>
 <br>
 </div>
-
-<script>
-function luvya(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
-
-var ts = luvya(10);
-  fetch("api/services/general-notices/banner.json?luvya=" + ts, {
-
-headers: {
-"Content-Type": "application/x-www-form-urlencoded"
-},
-method: "GET"
-}).then(response => {
-response.json().then(data => {
-  if (data.activity.id == 1) {
-    document.getElementById("imgbanner").src = data.banner.imgurl
-    document.getElementById("linkbanner").alt = data.banner.alttxt
-    document.getElementById("linkbanner").href = data.banner.imgdirect
-  } else if (data.activity.id == 3) {
-    if (Math.floor(Date.now() / 1000) > data.activity.timedpromotion_end_unix) {} 
-    else if (Math.floor(Date.now() / 1000) > data.activity.timedpromotion_start_unix) {
-      document.getElementById("imgbanner").src = data.banner.imgurl
-      document.getElementById("linkbanner").alt = data.banner.alttxt
-      document.getElementById("linkbanner").href = data.banner.imgdirect
-    }
-  }
-}).catch((error) => {
-  document.getElementById("imgbanner").src = "https://cdn.fullpwn.net/notices-unavailable.png"
-      })
-  
-
-
-});;
-let userAgentString = navigator.userAgent;
-
-// Detect Safari
-let safariAgent = userAgentString.indexOf("Safari") > -1;
-
-// Safari Debug
-//var safariAgent = true
-
-//if (safariAgent == true) {
-//  let preload = document.getElementById('preload');
-//  preload.style.display = "none"
-//}
-
-var va = document.getElementById('video');
-  function audiotoggle() {
-   va.muted = !va.muted;
-};
-//va.onerror = function() {
-//  document.getElementById("greet").innerHTML = "Something went wrong loading the page.";
-//};
-va.addEventListener("playing", (event) => {
-  document.getElementById("barprogress").classList.add("out");
-});
-  va.addEventListener("waiting", (event) => {
-  document.getElementById("barprogress").classList.remove("out");
-});
-//va.onwaiting = function() {
-// document.getElementById("barprogress").classList.remove("out");
-//};
-var archive_test = window.location.hostname
-console.log(archive_test)
-
-var textArray = [
-    'Downloading intergalactic space cows to your device.',
-    'Boo!',
-    'Connecting you to Mars.',
-    'Hacking your IP and sending a burrito to your address.',
-    'Cooking noodles.',
-    'Buying a shovel from Bunnings.',
-    'Getting a snag from Bunnings.',
-    'Thank you for being here ❤',
-    'Remember 16GB iPhones? Yeah, let\'s forget that.',
-    'Remember to check in on your mental health when you get the chance!',
-    'Live, Laugh, Love.',
-    'Are you ready for it?',
-    '\"That\'s fine, I\'ll tell mine you\'re gay!\"',
-    'Make sure to get Eras Tour tickets!',
-];
-var randomNumber = Math.floor(Math.random()*textArray.length);
-
-//document.getElementById("preload_fun").innerHTML = textArray[randomNumber];
-</script> 
 </html>
 
