@@ -8,23 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Miss Australiana</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <script src="/cdn-cgi/apps/head/bkkCRjuTdrn0MMFdZ1YCqnr2HsM.js"></script><link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
-  <!--<div class="preload" id="preload">
+  <div class="preload" id="preload">
     <div class="preload_box"></div>
-    <h2 class="preload_greet" id="greet">Welcome! This could take a while.</h2>
-    <i><p id="preload_fun" class="preload_fun">Boo!</p></i>
+    <h1 id="greet" class="greet">loading</h1>
     
     <div class="indeterminate-progress-bar">
       <div class="indeterminate-progress-bar__progress"></div>
     </div>
-  </div>-->
-  <span class="_kvls4 _nnktw" id="barprogress"></span>
+  </div>
 <div class="main" id="main">
-  
-<!--<h2 class="billalert"></h2>-->
 <h1>miss australiana</h1>
 <h3 class="t2">something funky happened on our end and pushed you to the fallback page. dont fret, you can always give it another shot.</h3>
 <h3 class="t2" hidden>::CLOUDFLARE_ERROR_500S_BOX::</h3>
@@ -43,12 +39,40 @@
 </div>
 </body>
 <script>
-  var location = document.location
-  if (location.host == 'fullpwn.net') {
+  function luvya(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+  var ts = luvya(10);
+  fetch("https://cors.technobytecritter.workers.dev/?https://missaustraliana.net/api/services/ping.json?" + ts, {
+
+headers: {
+"Content-Type": "application/x-www-form-urlencoded"
+},
+method: "GET"
+}).then(response => {
+response.json().then(data => {
+  if (data.online == 1) {
     document.body.innerHTML = "";
     
     window.location.href = "https://missaustraliana.net";
   }
+}).catch((error) => {
+  let preload = document.getElementById('preload');
+  preload.style.display = "none"
+      })
+  
+
+
+});;
+
   function rahh() {
     window.location.href = "https://missaustraliana.net";
 
