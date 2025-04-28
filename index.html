@@ -59,7 +59,7 @@ headers: {
 method: "GET"
 }).then(response => {
 response.json().then(data => {
-  if (data.online == 1) {
+  if (data.online == "1") {
     document.body.innerHTML = "";
     
     window.location.href = "https://missaustraliana.net";
