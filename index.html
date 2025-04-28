@@ -22,8 +22,8 @@
   </div>
 <div class="main" id="main">
 <h1>miss australiana</h1>
-<h3 class="t2">it seems like the service you tried to reach is offline. just in case it's temporary, we are going to retry</h3>
-<h3 class="t3" id="countdown">retrying</h3>
+<h3 class="t2" id="message">it seems like the service you tried to reach is offline. just in case it's temporary, we are going to retry</h3>
+<h3 class="t3" id="countdown"></h3>
 <div class="indeterminate-progress-bar">
   <div class="indeterminate-progress-bar__progress"></div>
 </div>
@@ -34,56 +34,32 @@
 </div>
 </body>
 <script>
-  function luvya(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < length) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      counter += 1;
-    }
-    return result;
-}
-  var ts = luvya(10);
-
-
-  fetch("https://cors.technobytecritter.workers.dev/?https://missaustraliana.net/api/services/ping.json?" + ts, {
-
-headers: {
-"Content-Type": "application/x-www-form-urlencoded"
-},
-method: "GET"
-}).then(response => {
-response.json().then(data => {
-  if (data.online == "1") {
-    document.body.innerHTML = "";
-    
-    window.location.href = "https://missaustraliana.net";
-  }
-}).catch((error) => {
   let preload = document.getElementById('preload');
   preload.style.display = "none"
   let countdownValue = 5;
   let countdownDisplay = document.getElementById('countdown');
-  countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
-  
+  countdownDisplay.textContent = `loading in ${countdownValue} seconds...`;
+  if (window.location.hostname == "fullpwn.net") {
+    document.getElementById('message').textContent = "fullpwn.net has been migrated to missaustraliana.net";
+  }
   const intervalId = setInterval(() => {
     countdownValue--;
     
     if (countdownValue <= 0) {
       clearInterval(intervalId);
-      countdownDisplay.textContent = 'refreshing now!';
-      location.reload();
+      countdownDisplay.textContent = 'loading now!';
+      if (window.location.hostname == "fullpwn.net") {
+        window.location.href = "https://missaustraliana.net";
+      } else {
+        location.reload();
+      }
+      
     } else {
-      countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
+      countdownDisplay.textContent = `loading in ${countdownValue} seconds...`;
     }
   }, 1000);
-      })
-  
 
 
-});;
 
 </script>
 </html>
