@@ -115,7 +115,6 @@ animation: opacity 15s ease-in-out forwards;
   margin-right: auto;
   height: 0.5rem;
   width: 50%;
-  z-index: 2;
 
   position: relative;
   overflow: hidden;
@@ -133,7 +132,6 @@ animation: opacity 15s ease-in-out forwards;
   bottom: 0;
   top: 0;
   width: 30%;
-  z-index: 2;
 
   /* Move the bar infinitely */
   animation-duration: 1s;
@@ -168,8 +166,11 @@ animation: opacity 15s ease-in-out forwards;
 .greet {
 color: white;
 position: sticky;
-z-index: 3;
+
 text-align: center;
 margin-left: auto;
 margin-right: auto;
+}
+.positions {
+  z-index: 2;
 }

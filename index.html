@@ -12,11 +12,11 @@
 
 </head>
 <body>
-  <div class="preload" id="preload">
+  <div class="preload positions" id="preload">
     <div class="preload_box"></div>
-    <h1 id="greet" class="greet">loading</h1>
+    <h1 id="greet" class="greet positions">loading</h1>
     
-    <div class="indeterminate-progress-bar">
+    <div class="indeterminate-progress-bar positions">
       <div class="indeterminate-progress-bar__progress"></div>
     </div>
   </div>
@@ -28,7 +28,7 @@
   <div class="indeterminate-progress-bar__progress"></div>
 </div>
 <br>
-<h3 class="t2">::CLOUDFLARE_ERROR_500S_BOX::</h3>
+<h3 class="t2" hidden>::CLOUDFLARE_ERROR_500S_BOX::</h3>
 
 
 </div>
@@ -68,17 +68,14 @@ response.json().then(data => {
   let countdownDisplay = document.getElementById('countdown');
   countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
   
-  // Start the countdown interval
   const intervalId = setInterval(() => {
     countdownValue--;
     
     if (countdownValue <= 0) {
-      // Clear the interval and refresh the page
       clearInterval(intervalId);
       countdownDisplay.textContent = 'refreshing now!';
       location.reload();
     } else {
-      // Update the display with new countdown value
       countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
     }
   }, 1000);
@@ -87,11 +84,6 @@ response.json().then(data => {
 
 
 });;
-
-  function rahh() {
-    window.location.href = "https://missaustraliana.net";
-
-  }
 
 </script>
 </html>
