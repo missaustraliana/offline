@@ -22,19 +22,14 @@
   </div>
 <div class="main" id="main">
 <h1>miss australiana</h1>
-<h3 class="t2">something funky happened on our end and pushed you to the fallback page. dont fret, you can always give it another shot.</h3>
-<h3 class="t2" hidden>::CLOUDFLARE_ERROR_500S_BOX::</h3>
-
-<h2 class="t2">where would you like to go?</h2>
-<div class="t3">
-  <a href="#" onclick="rahh()">Retry</a>
-  <br>
-  <a href="https://archive.org/details/@fullpwnmedia">Internet Archive</a>
-  <br>
-  <a rel="me" href="https://mstdn.social/@fullpwn">Personal Mastodon</a>
-  <br>
-  <a class="kis" href="https://mastodon.social/@keepingitswift">Keeping It Swift</a>
+<h3 class="t2">it seems like the service you tried to reach is offline. just in case it's temporary, we are going to retry</h3>
+<h3 class="t3" id="countdown">retrying</h3>
+<div class="indeterminate-progress-bar">
+  <div class="indeterminate-progress-bar__progress"></div>
 </div>
+<br>
+<h3 class="t2">::CLOUDFLARE_ERROR_500S_BOX::</h3>
+
 
 </div>
 </body>
@@ -51,6 +46,8 @@
     return result;
 }
   var ts = luvya(10);
+
+
   fetch("https://cors.technobytecritter.workers.dev/?https://missaustraliana.net/api/services/ping.json?" + ts, {
 
 headers: {
@@ -67,6 +64,24 @@ response.json().then(data => {
 }).catch((error) => {
   let preload = document.getElementById('preload');
   preload.style.display = "none"
+  let countdownValue = 5;
+  let countdownDisplay = document.getElementById('countdown');
+  countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
+  
+  // Start the countdown interval
+  const intervalId = setInterval(() => {
+    countdownValue--;
+    
+    if (countdownValue <= 0) {
+      // Clear the interval and refresh the page
+      clearInterval(intervalId);
+      countdownDisplay.textContent = 'refreshing now!';
+      location.reload();
+    } else {
+      // Update the display with new countdown value
+      countdownDisplay.textContent = `refreshing in ${countdownValue} seconds...`;
+    }
+  }, 1000);
       })
   
 
@@ -77,6 +92,7 @@ response.json().then(data => {
     window.location.href = "https://missaustraliana.net";
 
   }
+
 </script>
 </html>
 
